@@ -1,0 +1,8 @@
+JFinal 2.0常用工具类，具体使用可参考文档或者源码
+
+StrKit  字符串常用处理
+HashKit MD5，SHA hex（默认UTF-8）
+JsonKit 转换model、record、Object为json字符串
+PathKit 获取WEB-ROOT、classes等路径
+PropKit 配置文件读取工具类
+HttpKit http get、post等处理

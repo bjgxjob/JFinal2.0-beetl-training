@@ -1,0 +1,13 @@
+## 相关连接
+官方网站：http://ueditor.baidu.com/website/
+
+演示地址：http://ueditor.baidu.com/website/onlinedemo.html
+
+下载地址：http://ueditor.baidu.com/website/download.html#ueditor
+
+Java-Maven项目引入UEditor图片上传组件jar包类库的5种方式：http://blog.csdn.net/FansUnion/article/details/41517719
+
+maven JAR包查找：http://mvnrepository.com/
+
+## 其他
+JFinal Handler源码解析——从配置到工作原理:http://my.oschina.net/qq596392912/blog/504685

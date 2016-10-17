@@ -1,0 +1,26 @@
+beetl文档地址：http://ibeetl.com/guide/
+
+## 分页组件
+代码：/common/_paginate.html
+
+使用：<% include("/common/_paginate.html", {actionUrl: ctxPath + '/admin/blogs', page: page!, btnCount: 7}){} %>
+
+## beetl标签，函数
+1. 标签，实现热门博客的标签组件
+##自定义标签
+注册
+TAG.hotBlog = net.dreamlu.ui.beetl.HotBlogsTag
+
+使用
+<#hotBlog limit="5" order="id desc"; x>
+${x.id}, ${x.title} <br/>
+</#hotBlog>
+
+2. 自定义FunctionPackage
+注册
+FNP.c = net.dreamlu.ui.beetl.Functions
+
+使用
+${c.encodeUrl(from)}
+
+${c.test(123123)}

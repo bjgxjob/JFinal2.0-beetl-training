@@ -1,0 +1,44 @@
+一、首先
+表单需要添加enctype="multipart/form-data"
+<form action="${ctxPath}/image/upload" method="post" enctype="multipart/form-data"></form>
+
+否则会抛出下面异常：
+java.lang.RuntimeException: java.io.IOException: 
+	Posted content type isn't multipart/form-data
+
+二、注意
+JFinal文件上传，在它之前的校验器(Validator)和Interceptor(拦截器)里
+都需要执行gitFile相关方法，才能获取参数
+特别是Validator
+
+三、Ajax上传时可使用jQuery Form Plugin
+网站：http://malsup.com/jquery/form/
+
+它还支持文件上次的进度,代码示例：
+// 镜像构建提交，带有文件上传，用ajax from
+$("#js_images_form").ajaxForm({
+    dataType: "json",
+    beforeSend: function() {
+        layer.load(2, {shade: 0.6, scrollbar: false});
+        var percentVal = "0%";
+        $('.am-progress-bar').css("width", percentVal).text(percentVal);
+    },
+    uploadProgress: function(event, position, total, percentComplete) {
+        var percentVal = percentComplete + "%";
+        $('.am-progress-bar').css("width", percentVal).text(percentVal);
+    },
+    success: function() {
+        var percentVal = "100%";
+        $('.am-progress-bar').css("width", percentVal).text(percentVal);
+    },
+    complete: function(xhr) {
+        layer.closeAll('loading');
+        var data = $.parseJSON(xhr.responseText);
+        if (data.code === 0) {
+            layer.msg("构建成功，请稍后~", {shift: 1});
+            setTimeout(function(){window.location.href = getCtxPath() + "/admin";}, 6000);
+        } else {
+            layer.msg(data.message, {shift: 6});
+        }
+    }
+});

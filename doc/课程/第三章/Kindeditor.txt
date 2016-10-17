@@ -1,0 +1,2 @@
+官方地址：http://kindeditor.net/demo.php
+文档地址：http://kindeditor.net/docs/index.html

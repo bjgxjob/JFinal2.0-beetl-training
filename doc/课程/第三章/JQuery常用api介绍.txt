@@ -1,0 +1,69 @@
+# JQuery常用api介绍
+
+注意：1. id一个页面只能出现一次，class可重复出现
+     2. JQuery的elem对象是一个数组
+
+举例jquery-test：http://localhost:8080/static/jquery-test.html
+
+## js elem对象和JQuery对象互相转换：
+js to JQuery：$(document.getElementById("xxx”)); $(this); $(JS对象)
+JQuery to js：$("#xxx").get(0); $("#xxx")[0]
+
+## 将json字符串转成JSON对象
+var obj = $.parseJSON('{"name":"John"}');
+alert( obj.name === "John" );
+
+## 
+$.trim("  hello, how are you?  ");
+
+## JQuery1.7 使用on代替live，在使用ajax动态加载进来的html事件使用on
+$(document).on("click", “.class”, function(){
+    
+});
+
+## checked，selected 等参数的读取使用$( elem ).prop( "checked" )
+其他采用 $( elem ).attr( "xxx" )
+
+## 推荐采用 data 将可变参数绑定到 elem 上，最大程度复用
+<button data-action="${ctxPath}/view/${x.id!}" data-id="#view_wd" class="js_btn_view"> 详情</button>
+
+结合laytpl(JS模板): http://sentsin.com/layui/laytpl/
+
+<script type="text/html" id="view_wd" data-width="680px" data-height="380px">
+laytpl模板
+</script>
+
+/**
+ * 通用预览信息，ajax拉取
+ */
+$(".js_btn_view").click(function(){
+    var action = $(this).data("action");
+    var $view  = $($(this).data("id"));
+    var width  = $view.data("width");
+    var height = $view.data("height");
+    $.getJSON(action, function(data){
+        laytpl($view.html()).render(data, function(html){
+            layer.open({
+                type: 1,
+                title: '<span class="am-icon-file-text-o"></span> 详情',
+                scrollbar: false,
+                skin: 'layui-layer-rim',
+                area: [width == null ? '680px' : width, height == null ? '420px' : height],
+                content: html
+            });
+        });
+    });
+});
+
+## 全选
+$(document).on("click", "#test3",function() {
+    $(this).closest("table").find('td input[type="checkbox"]').prop("checked", $(this).prop("checked"));
+});
+
+## JS的调试
+1. 修改dom节点、修改样式
+
+2. 开发者工具不完全指南
+【Chrome开发者工具不完全指南（一、基础功能篇）】http://web.jobbole.com/82558/
+【Chrome开发者工具不完全指南（二、进阶篇）】http://web.jobbole.com/82562/
+【Chrome开发者工具不完全指南（三、性能篇）】http://web.jobbole.com/82576/

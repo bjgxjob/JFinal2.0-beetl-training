@@ -1,0 +1,23 @@
+## java邮件发送
+
+依赖`com.sun.mail` javax.mail
+<dependency>
+	<groupId>com.sun.mail</groupId>
+	<artifactId>javax.mail</artifactId>
+	<version>1.5.4</version>
+</dependency>
+
+或者 commons-email
+<dependency>
+	<groupId>org.apache.commons</groupId>
+	<artifactId>commons-email</artifactId>
+	<version>1.4</version>
+</dependency>
+
+commons-email是对上面的java邮件发送的封装，使得其更加简单好用
+
+## 简单的例子
+Java Mail: http://www.cnblogs.com/codeplus/archive/2011/10/30/2229391.html
+commons-email发送邮件: http://daoexception.iteye.com/blog/410235
+
+## beetl

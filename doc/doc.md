@@ -1,0 +1,1 @@
+jsonp原理：http://www.cnblogs.com/dowinning/archive/2012/04/19/json-jsonp-jquery.html

@@ -1,0 +1,44 @@
+## 常用的2中查询
+1. 使用model
+2. 使用Db
+
+*建议*：讲设计到sql的查询都封装到model中，方便统一管理
+
+JFinal2.0之——使用Sqls工具类加载和使用外部sql文件：http://blog.dreamlu.net/blog/75
+
+## model
+在model中建议使用`this.`将所有的方法点出来，查找自己想要的
+```
+// 根据id查找
+this.findById(idValue)
+this.findByIdLoadColumns(idValue, columns)
+// 返回list对象
+this.find(sql)
+this.findByCache(cacheName, key, sql)
+// 查找一个对象
+this.findFirst(sql)
+this.findFirstByCache(cacheName, key, sql)
+// 分页查询返回page对象
+this.paginate(pageNumber, pageSize, select, sqlExceptSelect)
+// 根据id删除
+this.deleteById(idValue)
+```
+
+## Db的常用
+1. 主从库，多数据库的使用 Db.use 参考:http://www.oschina.net/question/936368_221458
+   Db.use("main").find("sql") 
+
+2. 查询 Db.find* 系列方法，不一一列举，在视频中提到。让大家养成自学的习惯！
+
+3. Db.query 用来查找count，sum等直接返回Integer, Long或者Object对象
+	只需要查某个参数，可采用此方法。避免从mode或者recurd中获取参数
+
+## sql拼接
+like 的拼接
+http://git.oschina.net/596392912/jnode/blob/master/src/net/dreamlu/model/Blog.java
+
+in的拼接
+
+
+## 问题
+TUser.dao.dao的问题
